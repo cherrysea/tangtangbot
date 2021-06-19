@@ -1,24 +1,26 @@
-# import telebot
-#
-# import Config
-#
-# class TangBot(object):
-#     def __init__(self):
-#             self.token = Config.config['TOKEN']
-#             self.bot = telebot.TeleBot(self.token, parse_mode=None)
-#
-#     def bot_main(self):
-#         # 获取最新消息
-#         update = self.bot.get_updates()
-#         # print(update)
-#         if update is None:
-#             return "Show me your TOKEN please!"
-#         logging.info("Calling {}".format(update.message))
-#         self.handdle_message(update.message)
-#         return "ok"
-#     def handdle_message(self, message):
-#         if(message.content_types=='text):
-#             self.echo(message)
-#         return
-#     def echo(self, message):
-#         self.bot.reply_to(message.chat.id, message.text)
+# -*- coding: utf-8 -*-
+import time
+
+import telebot
+import Config
+
+token = '1829725347:AAGEUC1uVH5PLfbN5s1Wu645SG2Qtwdzr8A'
+
+bot = telebot.TeleBot(token)
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(chat_id=message.chat.id, text='你寄吧谁！')
+
+
+@bot.message_handler(content_types=['text'])
+def echo(message):
+    bot.send_message(message.chat.id, message.text)
+
+if __name__=='__main__':
+
+    while True:
+        try:
+            bot.polling(none_stop=True)
+        except Exception as e:
+            time.sleep(2)
