@@ -16,9 +16,9 @@ def start(message):
     bot.send_message(chat_id=message.chat.id, text='你寄吧谁！')
 
 # 回声
-@bot.message_handler(content_types=['text'])
-def echo(message):
-    bot.send_message(message.chat.id, message.text)
+# @bot.message_handler(content_types=['text'])
+# def echo(message):
+#     bot.send_message(message.chat.id, message.text)
 
 # 一言
 @bot.message_handler(commands=['hitokoto'])
