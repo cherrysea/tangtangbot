@@ -7,7 +7,7 @@ url = Config.config['hitokoto']
 def get_hitokoto():
 
     data = {
-        'c':'j'
+        'c':'a'
     }
     req = requests.get(url, params=data)
     rs = dict(req.json())
