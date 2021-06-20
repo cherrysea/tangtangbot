@@ -13,4 +13,4 @@ def get_hitokoto():
     rs = dict(req.json())
     return str(rs['hitokoto']+'——  '+rs['from'])
 
-print(get_hitokoto())
+# print(get_hitokoto())
